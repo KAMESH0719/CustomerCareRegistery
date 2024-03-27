@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *
+        {
+            padding:0;
+            box-sizing:border-box;
+        }
+        #log1
+        {
+            padding-left:150px;
+            padding-top:50px;
+            padding-right:150px;
+        }
+        .menu-bar
+        {
+            background:rgb(100,100,0);
+            text-align:center;
+        }
+        .menu-bar ul
+        {
+            display:inline-flex;
+            list-style:none;
+            color:#fff;
+        }
+        .menu-bar ul li
+        {
+            width:200px;
+            margin:0px;
+            padding:5px;
+        }
+        #sub
+        {
+            width:200px;
+            height:25px;
+            background-color:#9f6cff;
+            border-style: ridge;
+            border-color:gray;
+            border-radius:6px;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body style="background-color: antiquewhite">
+    <div class="menu-bar">
+        <ul>
+            <li> <a href="/login" style="text-decoration:none;">My Profile</a> </li>
+            <li><a href="/askquestion" style="text-decoration:none;">Ask a Question</a></li>
+            <li><a href="/reviewquestion" style="text-decoration:none;">Questions Review</a></li>
+            <li><a href="/logout" style="text-decoration:none;">Logout</a></li>
+        </ul>
+    </div>
+
+    <div id="log1">
+        <div style="border:1px solid black;background-color:#fffffa">
+            <center>
+                {% if is_profile %}
+                    <h1> Welcome To Customer Care Registery </h1>
+                    <h1>{{ msg }}</h1><br/>
+                    <h2>Name:   {{  record[0][1]}}</h2><br/>
+                    <h2>UserName:   {{ record[0][2]}}</h2><br/>
+                    <h2>Email:   {{ record[0][4]}}</h2><br/>
+                    <h2>Mobile Number:   {{ record[0][5]}}</h2><br/>
+                {% endif %}
+                {% if is_question %}
+                    <form method="post" action="/recieve" id="qform">
+                    {% if sucessmsg %}
+                        <p>{{ sucessmsg }}</p>
+                    {% endif %}
+                        <br/><br/>
+                        <label for="ques">Ask Question</label><br/>
+                        <textarea form="qform" name="question" placeholder="Ask a Question" rows="7" cols="100" id="ques" required></textarea>
+                        <br/><br/>
+                        <input type="submit" value="Ask Question" id="sub">
+                    </form>
+                    <br/><br/>
+                {% endif %}
+                {% if is_review %}
+                    <br/><br/>
+                    <table style="width: 800px;text-align: center;height: auto">
+                        <th>Question</th>
+                        <th>Answer</th>
+                        <th>Status</th>
+                        {% for question in record_questions %}
+                            <tr>
+                                <td>{{ question[2]}}</td>
+                                <td>{{ question[3]}}</td>
+                                <td>
+                                    {% if question[4]==1 %}
+                                    Answered
+                                    {% else %}
+                                    Not Answered
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                    <br/><br/>
+                {% endif %}
+            </center>
+        </div>
+        </div>
+</body>
+</html>

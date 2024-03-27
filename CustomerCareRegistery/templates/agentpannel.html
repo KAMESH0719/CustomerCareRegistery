@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *
+        {
+            padding:0;
+            box-sizing:border-box;
+        }
+        #log1
+        {
+            padding-left:100px;
+            padding-top:50px;
+            padding-right:100px;
+        }
+        .menu-bar
+        {
+            background:rgb(100,100,0);
+            text-align:center;
+        }
+        .menu-bar ul
+        {
+            display:inline-flex;
+            list-style:none;
+            color:#fff;
+        }
+        .menu-bar ul li
+        {
+            width:200px;
+            margin:0px;
+            padding:5px;
+        }
+        #sub
+        {
+            width:200px;
+            height:25px;
+            background-color:#9f6cff;
+            border-style: ridge;
+            border-color:gray;
+            border-radius:6px;
+        }
+    </style>
+</head>
+<body style="background-color: antiquewhite">
+    <div class="menu-bar">
+        <ul>
+            <li> <a href="/login" style="text-decoration:none;">My Profile</a> </li>
+            <li><a href="/answerquestions" style="text-decoration:none;">Answer Questions</a></li>
+            <li><a href="/logout" style="text-decoration:none;">Logout</a></li>
+        </ul>
+    </div>
+
+    <div id="log1">
+        <div style="border:1px solid black;background-color:#fffffa">
+            <center>
+            {% if is_agent_profile %}
+                    <h1> Welcome To Customer Care Registery </h1>
+                    <h1>Welcome Agent</h1><br/>
+                    <h2>Name:   {{  record[0][4]}}</h2><br/>
+                    <h2>UserName:   {{ record[0][4]}}</h2><br/>
+                    <h2>Email:   {{ record[0][3]}}</h2><br/>
+                    <h2>Mobile Number:   {{ record[0][5]}}</h2><br/>
+            {% endif %}
+            {% if is_answer %}
+                <br/><br/>
+                <form method="post" action="/update" id="answerform">
+                    {% if question_records %}
+                    <table style="text-align: center;height: auto;width: auto">
+                    <th>Question Id</th>
+                    <th>User</th>
+                    <th>Question</th>
+                    <th>Answer</th>
+                    <th>Update</th>
+                            <tr>
+                                <td><input type="text" value="{{ question_records[0][0]}}" name="qid" readonly style="border-style: hidden"></td>
+                                <td> <input type="text" value="{{ question_records[0][1] }}" name="userquestion" readonly style="border-style: hidden"></td>
+                                <td>{{ question_records[0][2] }}</td>
+                                <td><textarea form="answerform" rows="5" cols="80" name="answer"></textarea></td>
+                                <td><input type="submit" value="Update" id="sub"></td>
+
+                            </tr>
+                                {% else %}<h4>No Questions Found</h4>
+                                {% endif %}
+                    </table>
+                </form>
+            {% endif %}
+            </center>
+        </div>
+        </div>
+</body>
+</html>

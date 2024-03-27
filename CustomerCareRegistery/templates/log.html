@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+     <style>
+        .field
+        {
+            width:300px;
+            height:25px;
+            background-color:#fffbfc;
+            border-style: ridge;
+            border-color:gray;
+            border-radius:6px
+        }
+        #log1
+        {
+            padding-left:350px;
+            padding-top:50px;
+            padding-right:350px;
+        }
+        #sub
+        {
+            width:200px;
+            height:25px;
+            background-color:#9f6cff;
+            border-style: ridge;
+            border-color:gray;
+            border-radius:6px;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <div id="log1">
+        <div style="border:1px solid black;background-color:#ffffff">
+            <br/><br/>
+            <h1 style="font-size:20pt;font-family:cursive;">Welcome</h1><br/><br/>
+            <form  method="post" action="/logindata">
+                <p>{{ msg }}</p>
+                <br/>
+                Login As Customer &nbsp;&nbsp;&nbsp;
+                <input type="radio" name="agentcustomerradio" value="rcustomer" required>
+                &nbsp;&nbsp;&nbsp;
+                Login As Agent &nbsp;&nbsp;&nbsp;
+                <input type="radio" name="agentcustomerradio" value="ragent" required><br/><br/><br/>
+                User Name &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="text" name="uname" placeholder="Enter Username " class="field" required/> <br/><br/>
+                Password &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="password" name="passwo" placeholder="Enter Password" class="field" required/><br/><br/>
+                <br/>
+               &nbsp;&nbsp;&nbsp; <input type="submit" value="login" id="sub">
+                <br/><br/><br/>
+            </form>
+        </div>
+        <br/><br/>
+         <div style="border:1px solid black;background-color:#ffffff">
+             <br/><br/>
+             <span>Don't Have an account?<a href="/create" style="text-decoration:none">Sign up</a></span>
+             <br/><br/>
+             <span>Login as <a href="/admin" style="text-decoration:none">Admin</a></span>
+             <br/><br/>
+         </div>
+        </div>
+    </center>
+</body>
+
+</html>

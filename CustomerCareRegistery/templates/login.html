@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        .rfield
+        {
+            width:300px;
+            height:25px;
+            background-color:#fffbfc;
+            border-style: ridge;
+            border-color:gray;
+            border-radius:6px
+        }
+        #log1
+        {
+            padding-left:350px;
+            padding-top:50px;
+            padding-right:350px;
+        }
+        #sub
+        {
+            width: 200px;
+            height: 25px;
+            background-color:#9f6cff;
+            border-style: ridge;
+            border-color: gray;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body style="background-color:#ecf8ff">
+    <center>
+        <div id="log1">
+        <div style="border:1px solid black;background-color:#ffffff;padding-left:30px;padding-right:30px;">
+            <br/><br/>
+            <h1 style="font-size:20pt;font-family:cursive;">Welcome</h1><br/><br/>
+            <p style="font-size:15pt;color:red"> {{err_msg}}</p>
+            {{msg}}
+           {% if sucess_msg %}
+               {{ sucess_msg }} Back To <a href="/login">Login</a>
+            {% endif %}
+        <br/>
+            <form  method="post" action="/createdata">
+                Name &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="text" name="name" placeholder="Enter Name " class="rfield" required/> <br/><br/>
+                Email &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="email" name="email" placeholder="Enter Email" class="rfield" required/><br/><br/>
+                Username &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="text" name="username" placeholder="Enter UserName" class="rfield" required /><br/><br/>
+                Password &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="password" name="password" placeholder="Enter Password" class="rfield" required /><br/><br/>
+                Confirm Password
+                <input type="password" name="conformpassword" placeholder="Conform Password" class="rfield" required /> <br/><br/>
+                Mobile Number &nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="tel" name="phonenumber" placeholder="Enter MobileNumber" class="rfield">
+                <br/><br/><br/>
+               &nbsp;&nbsp;&nbsp; <input type="submit" value="create" id="sub" name="submit">
+                <br/><br/><br/><br/>
+                <a href="/agentregestration" style="text-decoration:none">Register As A Agent</a>
+                <br/><br/><br/><br/>
+            </form>
+        </div>
+        <br/><br/>
+        </div>
+    </center>
+</body>
+
+</html>
